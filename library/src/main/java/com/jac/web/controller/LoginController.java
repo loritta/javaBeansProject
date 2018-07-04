@@ -27,7 +27,7 @@ public class LoginController extends HttpServlet {
 			if(password.equals(u.getPassword())) {
 				
 				Globals.IsAuthorized=true;
-				request.setAttribute("fullname", u.getFirstName()+" "+ u.getLastName());
+				Globals.FullName = u.getFirstName()+" "+ u.getLastName();
 				request.setAttribute("user", u);
 				if(u.getRoleId()==2) {
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

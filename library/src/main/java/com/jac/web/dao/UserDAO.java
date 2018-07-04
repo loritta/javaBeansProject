@@ -1,9 +1,11 @@
 package com.jac.web.dao;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import com.jac.web.model.User;
@@ -26,9 +28,25 @@ public class UserDAO {
 	 * Please adjust the values when you will create the database.
 	 */
 	public Connection getConnection() {
+		
+		
+		
 		Connection conn = null;
 		ResourceBundle reader = null;
 		try {
+			Properties prop=new Properties();
+			InputStream in = getClass().getResourceAsStream("dbconfig.properties");
+			prop.load(in);
+	        in.close();
+			
+	        String drivers = prop.getProperty("jdbc.drivers");
+            String connectionURL = prop.getProperty("jdbc.url");
+            String username = prop.getProperty("jdbc.username");
+            String password = prop.getProperty("jdbc.password");
+            Class.forName(drivers);
+            con=DriverManager.getConnection(connectionURL,username,password);
+            System.out.println("Connection Successful");
+	        
 			reader = ResourceBundle.getBundle("dbconfig.properties");
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(reader.getString("db.url"), reader.getString("db.username"),
@@ -42,9 +60,10 @@ public class UserDAO {
 	public User getUser(String username) {
 		User u = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary",
-					"Iz8voBg0xU~-");
+			//Class.forName("com.mysql.jdbc.Driver");
+			Connection con = getConnection();
+					//DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary",
+					//"Iz8voBg0xU~-");
 			String query = "select * from users where username=?";
 			PreparedStatement st = con.prepareStatement(query);
 			st.setString(1, username);
