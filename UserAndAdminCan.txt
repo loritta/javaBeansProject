@@ -1,0 +1,34 @@
+visitor can =====>
+**no nav bar for the visitor
+*login as user and admin\
+*the logout page view for the user that left session
+
+*for wrong password there is a 
+message on the login page that appears
+
+user can =====>>>
+logout 
+*see the photos of books available
+*see the about page
+*see contact information
+we can check maybe for the book reservation or rent
+*search books
+
+admin can ======>>>
+
+*see list of books***admin main page --> HTML table
+tags) which will have a table header tag 
+Book ID, Book Name and Book Author.
+*add books --> as a button on the main page that leads 
+to add book page.
+*edit books
+*delete books
+*search books
+*see list of users***the button on the menu bar --->
+User information stored is username, password, 
+first, last name, city and postal code.
+*add users--> as a button on the main page that leads 
+to add user page.
+*edit users
+*delete users
+*search users
