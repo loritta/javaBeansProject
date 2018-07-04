@@ -12,7 +12,8 @@ logout
 *see the about page
 *see contact information
 we can check maybe for the book reservation or rent
-*search books
+*search books --> if no book found display:  no book
+found, try again.
 
 admin can ======>>>
 
