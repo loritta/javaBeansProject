@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<%@page import="com.jac.web.controller.Globals"%>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 
 <body>
-   <jsp:include page="Shared/_navbarUser.jsp"></jsp:include>
-
+   <jsp:include page="Shared/_navbarAdmin.jsp"></jsp:include>
+ 
 
     <br />
     <br />
@@ -13,8 +14,16 @@
         
 <!--         THE BODY CONTENT STARTS HERE -->
         
+		<%if (!Globals.IsAdmin){%>
+			<jsp:forward page="welcome.jsp"/>
+			<%}%>
         
-        <h1> Here is USER page</h1>
+
+        <h1> Here is admin page</h1>
+        
+        
+        
+        
         
         
 <!--         END OF THE BODY CONTENT-->

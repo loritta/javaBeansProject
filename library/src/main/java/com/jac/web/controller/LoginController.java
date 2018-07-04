@@ -1,38 +1,54 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoginController
- */
+import com.jac.web.dao.UserDAO;
+import com.jac.web.model.User;
+
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public LoginController() {
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
+			UserDAO user = new UserDAO();
+			
+			User u = user.getUser(username);
+			
+			if(password.equals(u.getPassword())) {
+				
+				Globals.IsAuthorized=true;
+				request.setAttribute("fullname", u.getFirstName()+" "+ u.getLastName());
+				request.setAttribute("user", u);
+				if(u.getRoleId()==2) {
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				rd.forward(request, response);
+				}
+				else if (u.getRoleId()==1) {
+					Globals.IsAdmin=true;
+					RequestDispatcher rd = request.getRequestDispatcher("indexAdmin.jsp");
+					rd.forward(request, response);
+				}
+				
+			}else {
+				Globals.IsAuthorized=false;
+				request.setAttribute("username", null);
+				request.setAttribute("error", 
+						"Wrong username or password.");
+				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+				rd.forward(request, response);
+			}
+			
+			
 	}
 
 }

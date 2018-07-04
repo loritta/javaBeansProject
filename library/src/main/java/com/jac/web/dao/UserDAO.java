@@ -2,7 +2,11 @@ package com.jac.web.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
+
+import com.jac.web.model.User;
 
 public class UserDAO {
 
@@ -22,15 +26,46 @@ public class UserDAO {
 	 * Please adjust the values when you will create the database.
 	 */
 	public Connection getConnection() {
-	Connection conn=null;
-	ResourceBundle reader = null;
-	 try{ 
-	     reader = ResourceBundle.getBundle("dbconfig.properties");
-	     Class.forName("com.mysql.jdbc.Driver");
-	     conn=DriverManager.getConnection(reader.getString("db.url"),reader.getString("db.username"),reader.getString("db.password"));
-	     
-	 }catch(Exception e){
+		Connection conn = null;
+		ResourceBundle reader = null;
+		try {
+			reader = ResourceBundle.getBundle("dbconfig.properties");
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(reader.getString("db.url"), reader.getString("db.username"),
+					reader.getString("db.password"));
+
+		} catch (Exception e) {
+		}
+		return conn;
 	}
-	 return conn;
-}
+
+	public User getUser(String username) {
+		User u = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary",
+					"Iz8voBg0xU~-");
+			String query = "select * from users where username=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, username);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				u = new User();
+				String usernameFromDB = rs.getString("username");
+				String passwordFromDB = rs.getString("password");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				int roleId = rs.getInt("roleID");
+				u.setUsername(usernameFromDB);
+				u.setPassword(passwordFromDB);
+				u.setFirstName(firstName);
+				u.setLastName(lastName);
+				u.setRoleId(roleId);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
 }

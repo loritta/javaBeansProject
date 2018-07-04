@@ -10,11 +10,21 @@
   	<description>Will perform the login function for the initial page</description>
   	<servlet-class>com.jac.web.controller.LoginController</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LogoffController</servlet-name>
+  	<display-name>LogoffController</display-name>
+  	<description></description>
+  	<servlet-class>com.jac.web.controller.LogoffController</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LoginController</servlet-name>
-  	<url-pattern>/getUser</url-pattern>
+  	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoffController</servlet-name>
+  	<url-pattern>/logoff</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>welcome.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
