@@ -1,8 +1,3 @@
-<%@page import="com.jac.web.controller.Globals"%>
-<%
-	Globals.IsAuthorized = false;
-	Globals.IsAdmin = false;
-%>
 <!DOCTYPE html>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>

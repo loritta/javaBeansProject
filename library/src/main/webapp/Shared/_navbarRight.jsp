@@ -7,7 +7,7 @@
 	<ul class="nav navbar-nav navbar-right">
 
 	<li><a href="#">Hello, <%=Globals.FullName %></a></li>
-	<li><a href="welcome.jsp">Log off</a></li>
+	<li><a href="logoff">Log off</a></li>
 </ul>
 	
 <%}%>

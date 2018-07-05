@@ -1,7 +1,7 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jac.web.dao.BookDAO;
+
 import com.jac.web.dao.UserDAO;
-import com.jac.web.model.Book;
+
 import com.jac.web.model.User;
 
 public class LoginController extends HttpServlet {
