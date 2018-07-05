@@ -2,7 +2,7 @@
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 
-<body>
+<body class="backgroundLogin">
 	<br />
 	<br />
 	<div class="container body-content" style="margin-top: 45px">
@@ -47,7 +47,6 @@
 
 
 		</div>
-		<hr />
 		<jsp:include page="Shared/_footer.jsp"></jsp:include>
 	</div>
 
