@@ -1,10 +1,13 @@
 <%@page import="com.jac.web.controller.Globals"%>
 <%@page import="com.jac.web.model.User"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 <html>
-
-<jsp:include page="Shared/_head.jsp"></jsp:include>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -54,9 +57,10 @@
 				<label class="control-label col-sm-2" for="role">Role:</label>
 				<div class="col-sm-4">
 				<select name="role" id="role" class="form-control">
-				<option>Please select the user's Role</option>
-				<option value="admin">Admin</option>
-				<option value="user">User</option>
+				
+					<c:forEach items="${listRoles}" var="role">
+        			<option value="${role.id}">${role.name}</option>
+    			</c:forEach>
 				</select>
 				</div>
 			</div>

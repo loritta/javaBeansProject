@@ -16,6 +16,12 @@
 		<description></description>
 		<servlet-class>com.jac.web.controller.LogoffController</servlet-class>
 	</servlet>
+	 <servlet>
+  	<servlet-name>UserRolesController</servlet-name>
+  	<display-name>UserRolesController</display-name>
+  	<description></description>
+  	<servlet-class>com.jac.web.controller.UserRolesController</servlet-class>
+  </servlet>
 	<servlet>
 		<servlet-name>DeleteBookController</servlet-name>
 		<display-name>DeleteBookController</display-name>
@@ -64,6 +70,10 @@
 		<servlet-name>GoToEditUser</servlet-name>
 		<url-pattern>/GoToEditUser</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+  	<servlet-name>UserRolesController</servlet-name>
+  	<url-pattern>/UserRoles</url-pattern>
+  </servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>welcome.jsp</welcome-file>
 	</welcome-file-list>

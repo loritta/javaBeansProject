@@ -119,6 +119,7 @@ public class UserDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 	
 	//Jie Add Below Function, Please don't remove
@@ -150,5 +151,8 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return u;
+
 	}
+	
+	
 }
