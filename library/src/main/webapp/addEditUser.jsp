@@ -57,10 +57,9 @@
 				<label class="control-label col-sm-2" for="role">Role:</label>
 				<div class="col-sm-4">
 				<select name="role" id="role" class="form-control">
-				
-					<c:forEach items="${listRoles}" var="role">
-        			<option value="${role.id}">${role.name}</option>
-    			</c:forEach>
+				<option value="">Please select the user's Role</option>
+				<option value="1">Admin</option>
+				<option value="2">User</option>
 				</select>
 				</div>
 			</div>
@@ -154,8 +153,8 @@
 				<div class="col-sm-4">
 				<select name="role" id="role" class="form-control">
 				<option>Please select the user's Role</option>
-				<option value="admin">Admin</option>
-				<option value="user">User</option>
+				<option value="1">Admin</option>
+				<option value="2">User</option>
 				</select>
 				</div>
 			</div>

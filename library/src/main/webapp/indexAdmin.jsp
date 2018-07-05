@@ -92,8 +92,7 @@
 			var txt;
 			if (confirm("Do you want to delete the book id:" + id + "," + name)) {
 				
-				$.post("<%=Globals.RootPath%>
-		/DeleteBook", {
+				$.post("<%=Globals.RootPath%>/DeleteBook", {
 					ID : id
 				}, function(data, status) {
 					alert(data);

@@ -71,29 +71,6 @@ public class UserDAO {
 		return u;
 	}
 
-	public void addUser() throws ClassNotFoundException {
-		User user = new User();
-		try {
-			String query = "INSERT INTO users (username, password, firstName, lastName, phone, address, city, province, zip, roleID) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement st = Globals.db.getConnection().prepareStatement(query);
-
-			st.setString(1, user.getUsername());
-			st.setString(2, user.getPassword());
-			st.setString(3, user.getFirstName());
-			st.setString(4, user.getLastName());
-			st.setString(5, user.getPhone());
-			st.setString(6, user.getAddress());
-			st.setString(7, user.getCity());
-			st.setString(8, user.getProvince());
-			st.setString(9, user.getZip());
-			st.setString(10, "2");
-			st.execute();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public void addUser(User user) throws ClassNotFoundException {
 		try {
@@ -103,7 +80,7 @@ public class UserDAO {
 			String query = "INSERT INTO users (username, password, firstName, lastName, phone, address, city, province, zip, roleID) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement st = con.prepareStatement(query);
-
+			String roleId = Integer.toString(user.getRoleId());
 			st.setString(1, user.getUsername());
 			st.setString(2, user.getPassword());
 			st.setString(3, user.getFirstName());
@@ -113,7 +90,7 @@ public class UserDAO {
 			st.setString(7, user.getCity());
 			st.setString(8, user.getProvince());
 			st.setString(9, user.getZip());
-			st.setString(10, "2");
+			st.setString(10, roleId);
 			st.execute();
 
 		} catch (SQLException e) {

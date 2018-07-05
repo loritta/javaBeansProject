@@ -35,8 +35,8 @@ public class AddUserController extends HttpServlet {
 				rd.forward(request, response);
 			}
 			
-			//user.setRoleId(roleId);
 			
+			int roleId = Integer.parseInt(request.getParameter("role"));  
 			user.setFirstName(request.getParameter("firstName"));
 			user.setLastName(request.getParameter("lastName"));
 			user.setPhone(request.getParameter("phone"));
@@ -44,6 +44,7 @@ public class AddUserController extends HttpServlet {
 			user.setCity(request.getParameter("city"));
 			user.setProvince(request.getParameter("province"));
 			user.setZip(request.getParameter("zipcode"));
+			user.setRoleId(roleId);
 			
 			UserDAO userDao = new UserDAO();
 			userDao.addUser(user);
