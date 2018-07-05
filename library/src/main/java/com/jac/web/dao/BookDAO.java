@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 
 import com.jac.web.controller.Globals;
 import com.jac.web.model.Book;
+import com.jac.web.model.User;
 
 public class BookDAO {
 
@@ -45,7 +46,7 @@ public class BookDAO {
 				String title = rs.getString("title");
 				String author = rs.getString("author");
 				int publishYear = rs.getInt("publishYear");
-				String picLink = rs.getString("picLink");
+				String picLink = rs.getString("picLink");				
 				bookList.add(new Book(id, title, author, publishYear, picLink));
 			}
 		} catch (Exception e) {
@@ -53,4 +54,31 @@ public class BookDAO {
 		}
 		return bookList;
 	}
+	
+	public Book getBookById(int id) {
+		Book b = null;
+		try {
+			String query = "select * from books where id=?";
+
+			PreparedStatement st = Globals.db.getConnection().prepareStatement(query);
+			st.setInt(1, id);
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				
+				int ID = rs.getInt("id");
+				String title = rs.getString("title");
+				String author = rs.getString("author");
+				int publishYear = rs.getInt("publishYear");
+				String piclink = rs.getString("picLink");
+				
+				b = new Book(ID,title,author,publishYear,piclink);				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b;
+
+	}
+	
 }

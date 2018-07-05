@@ -1,8 +1,6 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,18 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jac.web.dao.BookDAO;
+import com.jac.web.dao.UserDAO;
 import com.jac.web.model.Book;
+import com.jac.web.model.User;
 
 /**
- * Servlet implementation class DeleteBookController
+ * Servlet implementation class GoToEditBook
  */
-public class DeleteBookController extends HttpServlet {
+public class GoToEditBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBookController() {
+    public GoToEditBook() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +31,12 @@ public class DeleteBookController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int id =Integer.parseInt(request.getParameter("id"));
+		BookDAO bookdb = new BookDAO();
+		Book b =bookdb.getBookById(id);
+		request.setAttribute("book", b);
+		RequestDispatcher rd = request.getRequestDispatcher("addEditBook.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -40,14 +44,7 @@ public class DeleteBookController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id =Integer.parseInt( request.getParameter("ID"));
-		if(BookDAO.deleteBookById(id)) {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			out.print("You have already delete this book!");
-		}else {
-			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
-		}
+		doGet(request, response);
 	}
 
 }

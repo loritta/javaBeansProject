@@ -31,7 +31,7 @@
 		%>
 		<div class="panel">
 			<div class="panel-heading">
-				<button type="button" class="btn btn-primary">New Books</button>
+				<a href="addEditBook.jsp"><button type="button" class="btn btn-primary">New Book</button></a>
 			</div>
 			<div class="panel-body">
 				<table class="table table-hover">
@@ -54,19 +54,15 @@
 							<td><%=tempBook.getAuthor()%></td>
 							<td><%=tempBook.getPublishYear()%></td>
 							<td><button onclick="deleteBook(this)" type="button"
-									class="btn btn-danger">Del</button></td>
+									class="btn btn-danger">Del</button>|<a href="<%=Globals.RootPath%>/GoToEditBook?id=<%=tempBook.getId()%>"><button type="button" class="btn btn-primary">Edit</button></a> 
+									</td>
 						</tr>
 						<%
 							}
 						%>
 
 					</tbody>
-				</table>
-				<a href="<%=Globals.RootPath%>/GoToEditUser?id=1">
-					<button type="button" class="btn btn-warning">EditUser</button>
-				</a> <a href=""> go to Edit Book</a> <a href="addEditUser.jsp"><button
-						type="button" class="btn btn-warning">New User</button></a> <a href="">
-					go to Add Book</a>
+				</table>				
 			</div>
 		</div>
 
@@ -89,16 +85,16 @@
 			var name = trElement.children("td:eq(1)").text();
 			var author = trElement.children("td:eq(2)").text();
 			var publishyear = trElement.children("td:eq(3)").text();
-			var txt;
-			if (confirm("Do you want to delete the book id:" + id + "," + name)) {
+			var href=window.location.href;
+			if (confirm("Do you want to delete the book id: " + id + ", Name: " + name)) {
 				
-				$.post("<%=Globals.RootPath%>
-		/DeleteBook", {
+				$.post("<%=Globals.RootPath%>/DeleteBook", {
 					ID : id
-				}, function(data, status) {
+				}, function(data, status) {					
 					alert(data);
 					if (status.toLowerCase() == "success") {
-						trElement.remove();
+						//trElement.remove();
+						window.location.assign(href);
 					}
 				});
 			}

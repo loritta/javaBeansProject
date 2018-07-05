@@ -1,7 +1,6 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -11,18 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jac.web.dao.BookDAO;
+import com.jac.web.dao.UserDAO;
 import com.jac.web.model.Book;
+import com.jac.web.model.User;
 
 /**
- * Servlet implementation class DeleteBookController
+ * Servlet implementation class GoToAdminUser
  */
-public class DeleteBookController extends HttpServlet {
+public class GoToAdminUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteBookController() {
+    public GoToAdminUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +32,14 @@ public class DeleteBookController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		UserDAO userDb=new UserDAO();
+		ArrayList<User> usersUnActiveList = userDb.getAllUnActiveUser();
+		ArrayList<User> usersActiveList = userDb.getAllActiveUser();
+		request.setAttribute("usersUnActiveList", usersUnActiveList);
+		request.setAttribute("usersActiveList", usersActiveList);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("indexAdminUser.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -40,14 +47,7 @@ public class DeleteBookController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int id =Integer.parseInt( request.getParameter("ID"));
-		if(BookDAO.deleteBookById(id)) {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
-			out.print("You have already delete this book!");
-		}else {
-			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
-		}
+		doGet(request, response);
 	}
 
 }
