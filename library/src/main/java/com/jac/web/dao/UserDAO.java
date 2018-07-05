@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -44,7 +45,7 @@ public class UserDAO {
             String username = prop.getProperty("jdbc.username");
             String password = prop.getProperty("jdbc.password");
             Class.forName(drivers);
-            con=DriverManager.getConnection(connectionURL,username,password);
+            conn=DriverManager.getConnection(connectionURL,username,password);
             System.out.println("Connection Successful");
 	        
 			reader = ResourceBundle.getBundle("dbconfig.properties");
@@ -60,10 +61,10 @@ public class UserDAO {
 	public User getUser(String username) {
 		User u = null;
 		try {
-			//Class.forName("com.mysql.jdbc.Driver");
-			Connection con = getConnection();
-					//DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary",
-					//"Iz8voBg0xU~-");
+			Class.forName("com.mysql.jdbc.Driver");
+			//Connection con = getConnection();
+					Connection con = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary",
+					"Iz8voBg0xU~-");
 			String query = "select * from users where username=?";
 			PreparedStatement st = con.prepareStatement(query);
 			st.setString(1, username);
@@ -86,5 +87,32 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return u;
+	}
+	
+	public void addUser() throws ClassNotFoundException {
+		User user = new User();
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary", "ejblibrary", "Iz8voBg0xU~-");
+			String query = "INSERT INTO users (username, password, firstName, lastName, phone, address, city, province, zip, roleID) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			PreparedStatement st = con.prepareStatement(query);
+			
+			st.setString(1, user.getUsername());
+			st.setString(2, user.getPassword());
+			st.setString(3, user.getFirstName());
+			st.setString(4, user.getLastName());
+			st.setString(5, user.getPhone());
+			st.setString(6, user.getAddress());
+			st.setString(7, user.getCity());
+			st.setString(8, user.getProvince());
+			st.setString(9, user.getZip());
+			st.setString(10, "2");
+			st.execute();
+			
+		} catch (SQLException e) {		
+			e.printStackTrace();
+		}
 	}
 }
