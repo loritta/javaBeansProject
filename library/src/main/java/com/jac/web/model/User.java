@@ -12,7 +12,14 @@ public class User {
 	private String city;
 	private String province;
 	private String zip;
+	private boolean isActive;
 	
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
 	public int getID() {
 		return ID;
 	}
