@@ -18,5 +18,10 @@ public class UserRoles {
 		this.name = name;
 	}
 	
+	public UserRoles(int iD, String name) {
+		super();
+		ID = iD;
+		this.name = name;
+	}
 
 }

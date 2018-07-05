@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 <html>
@@ -50,9 +53,10 @@
 				<label class="control-label col-sm-2" for="role">Role:</label>
 				<div class="col-sm-4">
 				<select name="role" id="role" class="form-control">
-				<option>Please select the user's Role</option>
-				<option value="admin">Admin</option>
-				<option value="user">User</option>
+				
+					<c:forEach items="${listRoles}" var="role">
+        			<option value="${role.id}">${role.name}</option>
+    			</c:forEach>
 				</select>
 				</div>
 			</div>
