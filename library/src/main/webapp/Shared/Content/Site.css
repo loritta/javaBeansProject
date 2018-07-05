@@ -1,12 +1,22 @@
 ﻿a img {
-    transition: transform .4s ease-out;
+	transition: transform .4s ease-out;
 }
 
-    a img:hover {
-        transform: scale(1.05);
-    }
+a img:hover {
+	transform: scale(1.05);
+}
 
 .imgAssetIndex {
-    height: 78px;
-    width: 68px;
+	height: 78px;
+	width: 68px;
+}
+
+.formContainer {
+	width: 80vh;
+	margin-left: 40vh;
+	
+	border: solid 2px lightgray;
+	padding: 30px;
+	
+	border-radius: 3%;
 }

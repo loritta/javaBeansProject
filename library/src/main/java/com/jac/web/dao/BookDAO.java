@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.jac.web.controller.Globals;
 import com.jac.web.model.Book;
 
 public class BookDAO {
@@ -48,7 +49,7 @@ public class BookDAO {
 	}
 
 	public static Boolean deleteBookById(int id) {
-		Connection conn = getConnection();
+		Connection conn = Globals.db.getConnection();
 		try {
 			String SQL = "DELETE FROM books WHERE id = ? ";
 			PreparedStatement pstmt = null;

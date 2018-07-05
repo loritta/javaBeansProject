@@ -26,6 +26,13 @@ public class LoginController extends HttpServlet {
 			UserDAO user = new UserDAO();
 			
 			User u = user.getUser(username);
+			if(!u.isActive()) {
+				request.setAttribute("error", 
+						"Error: Your account is not active");
+				System.out.println("Error: Your account is not active");
+				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
+				rd.forward(request, response);
+			}
 			
 			if(password.equals(u.getPassword())) {
 				
