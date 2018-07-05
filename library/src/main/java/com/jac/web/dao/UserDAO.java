@@ -32,27 +32,17 @@ public class UserDAO {
 		
 		
 		Connection conn = null;
-		ResourceBundle reader = null;
+		ResourceBundle reader = null;		
 		try {
-			Properties prop=new Properties();
-			InputStream in = getClass().getResourceAsStream("dbconfig.properties");
-			prop.load(in);
-	        in.close();
-			
-	        String drivers = prop.getProperty("jdbc.drivers");
-            String connectionURL = prop.getProperty("jdbc.url");
-            String username = prop.getProperty("jdbc.username");
-            String password = prop.getProperty("jdbc.password");
-            Class.forName(drivers);
-            con=DriverManager.getConnection(connectionURL,username,password);
-            System.out.println("Connection Successful");
-	        
-			reader = ResourceBundle.getBundle("dbconfig.properties");
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(reader.getString("db.url"), reader.getString("db.username"),
-					reader.getString("db.password"));
+			//reader = ResourceBundle.getBundle("dbconfig.properties");
+			//String  driver = reader.getString("db.driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary",
+					"ejblibrary",
+					"Iz8voBg0xU~-");
 
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return conn;
 	}

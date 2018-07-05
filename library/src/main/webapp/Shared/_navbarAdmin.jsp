@@ -1,3 +1,4 @@
+<%@page import="com.jac.web.controller.Globals"%>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -14,8 +15,8 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="manageBooks.jsp">Books manager</a>
-				<li><a href="manageUsers.jsp">User manager</a>
+				<li><a href="<%=Globals.RootPath%>/GoToAdmin">Books manager</a>
+				<li><a href="<%=Globals.RootPath%>/GoToAdmin">User manager</a>
 			</ul>
 		   
 		   <jsp:include page="_navbarRight.jsp"></jsp:include>

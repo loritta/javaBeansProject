@@ -1,6 +1,7 @@
 package com.jac.web.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jac.web.dao.BookDAO;
 import com.jac.web.dao.UserDAO;
+import com.jac.web.model.Book;
 import com.jac.web.model.User;
 
 public class LoginController extends HttpServlet {
@@ -35,8 +38,11 @@ public class LoginController extends HttpServlet {
 				}
 				else if (u.getRoleId()==1) {
 					Globals.IsAdmin=true;
-					RequestDispatcher rd = request.getRequestDispatcher("indexAdmin.jsp");
-					rd.forward(request, response);
+					response.sendRedirect(Globals.RootPath+"/GoToAdmin");
+//					ArrayList<Book> booksList = BookDAO.getAllBook();
+//					request.setAttribute("booksList", booksList);
+//					RequestDispatcher rd = request.getRequestDispatcher("indexAdmin.jsp");
+//					rd.forward(request, response);
 				}
 				
 			}else {
