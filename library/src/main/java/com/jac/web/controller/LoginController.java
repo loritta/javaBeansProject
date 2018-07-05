@@ -26,41 +26,41 @@ public class LoginController extends HttpServlet {
 			UserDAO user = new UserDAO();
 			
 			User u = user.getUser(username);
-			if(!u.isActive()) {
-				request.setAttribute("error", 
-						"Error: Your account is not active");
-				System.out.println("Error: Your account is not active");
-				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
-				rd.forward(request, response);
+			
+			String loginErrorMessage = "Error: ";
+			boolean loginError = false;
+			// Switch login error
+			if (u == null) {
+				loginErrorMessage += "Username " + username + " was not found";
+				loginError = true;
+			} else if (!u.isActive()) {
+				loginErrorMessage += "Account " + username + " is not active";
+				loginError = true;
+			} else if (!password.equals(u.getPassword())) {
+				loginErrorMessage += "Entered password for account " + username + " is incorrect";
+				loginError = true;
 			}
 			
-			if(password.equals(u.getPassword())) {
-				
-				Globals.IsAuthorized=true;
-				Globals.FullName = u.getFirstName()+" "+ u.getLastName();
-				request.setAttribute("user", u);
-				if(u.getRoleId()==2) {
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			if (loginError) {
+				request.setAttribute("error", loginErrorMessage);
+				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
 				rd.forward(request, response);
-				}
-				else if (u.getRoleId()==1) {
-					Globals.IsAdmin=true;
+			} else { //Login successful
+				Globals.IsAuthorized = true;
+				Globals.FullName = u.getFirstName() + " " + u.getLastName();
+				request.setAttribute("user", u);
+				if (u.getRoleId() == 2) {
+					RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+					rd.forward(request, response);
+				} else if (u.getRoleId() == 1) {
+					Globals.IsAdmin = true;
 					response.sendRedirect(Globals.RootPath+"/GoToAdmin");
 //					ArrayList<Book> booksList = BookDAO.getAllBook();
 //					request.setAttribute("booksList", booksList);
 //					RequestDispatcher rd = request.getRequestDispatcher("indexAdmin.jsp");
 //					rd.forward(request, response);
 				}
-				
-			}else {
-				Globals.IsAuthorized=false;
-				request.setAttribute("username", null);
-				request.setAttribute("error", 
-						"Wrong username or password.");
-				RequestDispatcher rd = request.getRequestDispatcher("welcome.jsp");
-				rd.forward(request, response);
 			}
-			
 			
 	}
 
