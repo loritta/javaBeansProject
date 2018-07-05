@@ -34,6 +34,12 @@
 		<description></description>
 		<servlet-class>com.jac.web.controller.AddUserController</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>GoToEditUser</servlet-name>
+		<display-name>GoToEditUser</display-name>
+		<description></description>
+		<servlet-class>com.jac.web.controller.GoToEditUser</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginController</servlet-name>
 		<url-pattern>/login</url-pattern>
@@ -53,6 +59,10 @@
 	<servlet-mapping>
 		<servlet-name>AddUserController</servlet-name>
 		<url-pattern>/AddUser</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>GoToEditUser</servlet-name>
+		<url-pattern>/GoToEditUser</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>welcome.jsp</welcome-file>

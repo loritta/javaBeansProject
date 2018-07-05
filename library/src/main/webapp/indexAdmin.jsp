@@ -59,9 +59,14 @@
 						<%
 							}
 						%>
-						
+
 					</tbody>
 				</table>
+				<a href="<%=Globals.RootPath%>/GoToEditUser?id=1">
+					<button type="button" class="btn btn-warning">EditUser</button>
+				</a> <a href=""> go to Edit Book</a> <a href="addEditUser.jsp"><button
+						type="button" class="btn btn-warning">New User</button></a> <a href="">
+					go to Add Book</a>
 			</div>
 		</div>
 
@@ -87,11 +92,12 @@
 			var txt;
 			if (confirm("Do you want to delete the book id:" + id + "," + name)) {
 				
-				$.post("<%=Globals.RootPath%>/DeleteBook", {
+				$.post("<%=Globals.RootPath%>
+		/DeleteBook", {
 					ID : id
 				}, function(data, status) {
 					alert(data);
-					if(status.toLowerCase()=="success"){
+					if (status.toLowerCase() == "success") {
 						trElement.remove();
 					}
 				});

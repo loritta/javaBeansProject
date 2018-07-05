@@ -46,7 +46,10 @@ public class AddUserController extends HttpServlet {
 			user.setZip(request.getParameter("zipcode"));
 			
 			UserDAO userDao = new UserDAO();
-			userDao.addUser();
+			userDao.addUser(user);
+			
+			
+			
 				
 		} catch (Exception e) {
 			e.printStackTrace();
