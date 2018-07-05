@@ -27,10 +27,11 @@
 			for (Book tempBook : booksList) {
 		%>
 		<div class="asset-item">
-			<div class="card" style="width: 20rem;">
-				<img class="card-img-top" src=<%=tempBook.getPicLink()%>
-					style="height: 230px;" title="<%=tempBook.getTitle()%>"
-					alt="<%=tempBook.getTitle()%>" /><br /> <br />
+			<div class="card">
+				<a href="#">
+				<img class="card-img-top scaleImg" src=<%=tempBook.getPicLink()%>
+					style="height: 270px;" title="<%=tempBook.getTitle()%>"
+					alt="<%=tempBook.getTitle()%>" /></a><br /> <br />
 				<div class="card-body">
 					<h4 class="card-title">
 						<%

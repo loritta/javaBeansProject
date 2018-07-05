@@ -1,8 +1,8 @@
-a img {
+.scaleImg {
 	transition: transform .4s ease-out;
 }
 
-a img:hover {
+.scaleImg:hover {
 	transform: scale(1.05);
 }
 
@@ -12,26 +12,39 @@ a img:hover {
 }
 
 .formContainer {
+	background-color:#fff;
 	width: 80vh;
-	margin-left: 40vh;
-	
 	border: solid 2px lightgray;
 	padding: 30px;
-	
 	border-radius: 3%;
 }
-.asset-item {
-            display: inline-block;
-            width: 350px;
-            text-align: center;
-            border: 1px solid lightgray;
-            margin: 5px;
-            padding: 2px;
-        }
 
-            .asset-item:hover {
-                border: 3px solid green;
-                border-radius: 5px;
-                padding: 0;
-                background: rgb(247, 251, 247);
-            }
+.asset-item {
+	display: inline-block;
+	width: 350px;
+	text-align: center;
+	border: 1px solid lightgray;
+	margin: 5px;
+	padding: 2px;
+}
+
+.asset-item:hover {
+	border: 3px solid green;
+	border-radius: 5px;
+	padding: 0;
+	background: rgb(247, 251, 247);
+}
+
+.backgroundLogin {
+	background-image: url("../../images/backgroundLogin2.jpg");
+	/*to be checked if the link works*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+footer {
+	left: 20px;
+	position: fixed;
+	bottom: 0;
+}
