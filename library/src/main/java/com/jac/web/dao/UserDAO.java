@@ -4,44 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import com.jac.web.controller.Globals;
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-import com.jac.web.model.Book;
 import com.jac.web.model.User;
 
-public class UserDAO {
-
-	/* Please use the following code to get the connection string */
-	/*
-	 * If you need to modify the parameters you may go to:
-	 * /library/src/main/java/com/jac/web/dao/dbconfig.properties If the file is not
-	 * there you may create it separately by adding a file to the project at the
-	 * specified location This is file is in git ignore so we don't put publicly our
-	 * gearhost connection strings on github the keys that should be there are: #DB
-	 * Properties db.driver="driverclassname"
-	 * db.url=jdbc:mysql://localhost:3306/YOURDBNAME db.username=USERNAME
-	 * db.password=PASSWORD Please adjust the values when you will create the
-	 * database.
-	 */
-//	public Connection getConnection() {		
-//		
-//		Connection conn = null;
-//		ResourceBundle reader = null;		
-//		try {
-//			//reader = ResourceBundle.getBundle("dbconfig.properties");
-//			//String  driver = reader.getString("db.driver");
-//			Class.forName("com.mysql.cj.jdbc.Driver");
-//			conn = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/ejblibrary",
-//					"ejblibrary",
-//					"Iz8voBg0xU~-");
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return conn;
-//	}
+public class UserDAO
+{
 
 	public User getUser(String username) {
 		User u = null;
@@ -73,8 +42,8 @@ public class UserDAO {
 		return u;
 	}
 
-
-	public void addUser() throws ClassNotFoundException {
+	// public void addUser() throws ClassNotFoundException {
+	public void addUser() {
 		User user = new User();
 		try {
 			String query = "INSERT INTO users (username, password, firstName, lastName, phone, address, city, province, zip, roleID) "
@@ -93,13 +62,13 @@ public class UserDAO {
 			st.setString(10, "2");
 			st.execute();
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-
-	public void addUser(User user) throws ClassNotFoundException {
+	// public void addUser(User user) throws ClassNotFoundException {
+	public void addUser(User user) {
 		try {
 
 			Class.forName("com.mysql.jdbc.Driver");
@@ -120,7 +89,7 @@ public class UserDAO {
 			st.setString(10, roleId);
 			st.execute();
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -196,7 +165,7 @@ public class UserDAO {
 		}
 		return userList;
 	}
-	
+
 	public ArrayList<User> getAllActiveUser() {
 		Connection conn = Globals.db.getConnection();
 		ArrayList<User> userList = new ArrayList<User>();
@@ -236,14 +205,14 @@ public class UserDAO {
 		}
 		return userList;
 	}
-	
+
 	public Boolean disableUserById(int id) {
 
 		String query = "UPDATE ejblibrary.users SET isActive=0 WHERE id=?";
 		Connection conn = Globals.db.getConnection();
 		try {
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setInt(1, id);			
+			preparedStmt.setInt(1, id);
 			preparedStmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
@@ -251,14 +220,14 @@ public class UserDAO {
 			return false;
 		}
 	}
-	
+
 	public Boolean enableUserById(int id) {
 
 		String query = "UPDATE ejblibrary.users SET isActive=1 WHERE id=?";
 		Connection conn = Globals.db.getConnection();
 		try {
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
-			preparedStmt.setInt(1, id);			
+			preparedStmt.setInt(1, id);
 			preparedStmt.executeUpdate();
 			return true;
 		} catch (Exception e) {
