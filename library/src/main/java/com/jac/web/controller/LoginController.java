@@ -50,15 +50,12 @@ public class LoginController extends HttpServlet {
 				Globals.FullName = u.getFirstName() + " " + u.getLastName();
 				request.setAttribute("user", u);
 				if (u.getRoleId() == 2) {
-					RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-					rd.forward(request, response);
+					response.sendRedirect(Globals.RootPath+"/GoToUser");
+//					RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//					rd.forward(request, response);
 				} else if (u.getRoleId() == 1) {
 					Globals.IsAdmin = true;
 					response.sendRedirect(Globals.RootPath+"/GoToAdmin");
-//					ArrayList<Book> booksList = BookDAO.getAllBook();
-//					request.setAttribute("booksList", booksList);
-//					RequestDispatcher rd = request.getRequestDispatcher("indexAdmin.jsp");
-//					rd.forward(request, response);
 				}
 			}
 			
