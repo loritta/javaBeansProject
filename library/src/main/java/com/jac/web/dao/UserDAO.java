@@ -89,8 +89,7 @@ public class UserDAO {
 		return u;
 	}
 	
-	public void addUser() throws ClassNotFoundException {
-		User user = new User();
+	public void addUser(User user) throws ClassNotFoundException {
 		try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
@@ -114,5 +113,6 @@ public class UserDAO {
 		} catch (SQLException e) {		
 			e.printStackTrace();
 		}
+	
 	}
 }
