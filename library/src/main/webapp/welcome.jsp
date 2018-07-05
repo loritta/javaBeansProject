@@ -15,6 +15,10 @@
 
 		<!--         THE BODY CONTENT STARTS HERE -->
 		<div class="formContainer">
+			<%String errorMessage = (String)request.getAttribute("error"); %>
+			<%if(errorMessage!=null) {%>
+				<h3 class="text-danger"><%=errorMessage%></h3>
+			<%} %>
 			<h2>Welcome to EJB Library!</h2>
 			<br />
 
