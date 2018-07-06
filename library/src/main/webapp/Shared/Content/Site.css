@@ -1,10 +1,20 @@
 .scaleImg {
 	transition: transform .4s ease-out;
 }
+.zzz{
+	margin-top:10px; 
+}
 
 .scaleImg:hover {
 	transform: scale(1.05);
 }
+.card-list-item{
+	border:0;
+}
+.card-list-item:hover{
+	background:lightyellow;
+}
+
 
 .imgAssetIndex {
 	height: 78px;
@@ -12,7 +22,7 @@
 }
 
 .formContainer {
-	background-color:#fff;
+	background-color: #fff;
 	width: 80vh;
 	border: solid 2px lightgray;
 	padding: 30px;

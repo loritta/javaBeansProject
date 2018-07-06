@@ -28,10 +28,10 @@
 		%>
 		<div class="asset-item">
 			<div class="card">
-				<a href="#">
-				<img class="card-img-top scaleImg" src=<%=tempBook.getPicLink()%>
-					style="height: 270px;" title="<%=tempBook.getTitle()%>"
-					alt="<%=tempBook.getTitle()%>" /></a><br /> <br />
+				<a href="#"> <img class="card-img-top scaleImg zzz"
+					src=<%=tempBook.getPicLink()%> style="height: 270px;"
+					title="<%=tempBook.getTitle()%>" alt="<%=tempBook.getTitle()%>" /></a><br />
+				<br />
 				<div class="card-body">
 					<h4 class="card-title">
 						<%
@@ -46,30 +46,32 @@
 							}
 						%>
 					</h4>
-<%-- 					<!--  <p class="card-text"><%=tempBook.getDescription()%></p>--> --%>
+					<%-- 					<!--  <p class="card-text"><%=tempBook.getDescription()%></p>--> --%>
 				</div>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><%=tempBook.getAuthor()%></li>
-					<li class="list-group-item"><%=tempBook.getPublishYear()%></li>
+					<li class="list-group-item card-list-item"><b>Author: </b><%=tempBook.getAuthor()%></li>
+					<li class="list-group-item card-list-item"><b>Publish year: </b><%=tempBook.getPublishYear()%></li>
 				</ul>
 
-			</div>
+				</div>
 		</div>
-		<%
-			}
-		%>
-	</div>
+
+			<%
+				}
+			%>
+		
 
 
 
 
 
-	<!--         END OF THE BODY CONTENT-->
+		<!--         END OF THE BODY CONTENT-->
 
 
-	<hr />
+		<hr />
+		<br />
 
-	<jsp:include page="Shared/_footer.jsp"></jsp:include>
+		<jsp:include page="Shared/_footer.jsp"></jsp:include>
 	</div>
 
 	<jsp:include page="Shared/_scripts_bundle.jsp"></jsp:include>

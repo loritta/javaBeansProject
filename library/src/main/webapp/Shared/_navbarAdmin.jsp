@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a href="index.jsp"><img src="images/logo.png"
+			<a href="GoToAdmin"><img src="images/logo.png" class="scaleImg"
 				style="height: 70px; margin-right: 25px" /></a> 
 
 <!-- 				<a href="index.jsp" -->
