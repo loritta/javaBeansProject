@@ -4,7 +4,6 @@
 <%@ page import="java.util.ArrayList"%>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
-
 <body>
 	<jsp:include page="Shared/_navbarAdmin.jsp"></jsp:include>
 
@@ -26,13 +25,23 @@
 
 
 		<h1>Books Management</h1>
+		
 		<%
 			ArrayList<Book> booksList = (ArrayList<Book>) request.getAttribute("booksList");
 		%>
 		<div class="panel">
 			<div class="panel-heading">
 				<a href="addEditBook.jsp"><button type="button" class="btn btn-primary">New Book</button></a>
-			</div>
+			</div>			
+			<div class="input-group col-sm-4">
+				<input id="myInput" type="text" class="form-control" placeholder="Search by anything"
+					name="search">
+				<div class="input-group-btn">
+					<button class="btn btn-default" type="submit">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+				</div>
+			</div>			
 			<div class="panel-body">
 				<table class="table table-hover">
 					<thead>
@@ -44,7 +53,7 @@
 							<th>Operation</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody id="myBookTable">
 						<%
 							for (Book tempBook : booksList) {
 						%>
@@ -99,6 +108,15 @@
 				});
 			}
 		}
+		
+		$(document).ready(function(){
+			  $("#myInput").on("keyup", function() {
+			    var value = $(this).val().toLowerCase();
+			    $("#myBookTable tr").filter(function() {
+			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			    });
+			  });
+			});
 	</script>
 </body>
 

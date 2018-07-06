@@ -4,7 +4,6 @@
 <%@ page import="java.util.ArrayList"%>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
-
 <body>
 	<jsp:include page="Shared/_navbarAdmin.jsp"></jsp:include>
 
@@ -38,7 +37,17 @@
 			</ul>
 
 			<div class="tab-content">
-				<div id="Active" class="tab-pane fade in active">					
+				<div id="Active" class="tab-pane fade in active">
+					<div class="input-group col-sm-4">
+						<input id="myActiveInput" type="text" class="form-control"
+							placeholder="Search by anything" name="search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</div>
+					</div>
+
 					<div class="panel">
 						<div class="panel-heading">
 							<a href="addEditUser.jsp"><button type="button"
@@ -79,14 +88,22 @@
 									%>
 
 								</tbody>
-							</table>							
+							</table>
 						</div>
 					</div>
 				</div>
-				<div id="UnActive" class="tab-pane fade">					
-					<div class="panel">
-						<div class="panel-heading">							
+				<div id="UnActive" class="tab-pane fade">
+					<div class="input-group col-sm-4">
+						<input id="myUnActiveInput" type="text" class="form-control"
+							placeholder="Search by anything" name="search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
 						</div>
+					</div>
+					<div class="panel">
+						<div class="panel-heading"></div>
 						<div class="panel-body">
 							<table class="table table-hover">
 								<thead>
@@ -122,7 +139,7 @@
 									%>
 
 								</tbody>
-							</table>							
+							</table>
 						</div>
 					</div>
 				</div>
@@ -173,6 +190,22 @@
 				});
 			}
 		}
+		
+		$(document).ready(function(){
+			  $("#myActiveInput").on("keyup", function() {
+			    var value = $(this).val().toLowerCase();
+			    $("#ActiveList tr").filter(function() {
+			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			    });
+			  });
+			  
+			  $("#myUnActiveInput").on("keyup", function() {
+				    var value = $(this).val().toLowerCase();
+				    $("#UnActiveList tr").filter(function() {
+				      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				    });
+				  });
+			});
 	</script>
 </body>
 

@@ -146,7 +146,9 @@ public class UserDAO {
 				String city = rs.getString("city");
 				String province = rs.getString("province");
 				String zip = rs.getString("zip");
+				String address = rs.getString("address");
 				u.setID(id);
+				u.setAddress(address);
 				u.setUsername(usernameFromDB);
 				u.setPassword(passwordFromDB);
 				u.setFirstName(firstName);
@@ -186,7 +188,9 @@ public class UserDAO {
 				String city = rs.getString("city");
 				String province = rs.getString("province");
 				String zip = rs.getString("zip");
+				String address = rs.getString("address");
 				u.setID(id);
+				u.setAddress(address);
 				u.setUsername(usernameFromDB);
 				u.setPassword(passwordFromDB);
 				u.setFirstName(firstName);
