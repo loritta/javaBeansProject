@@ -9,15 +9,14 @@ import java.util.ArrayList;
 
 import com.jac.web.model.User;
 
-public class UserDAO
-{
+public class UserDAO {
 
 	public User getUser(String username) {
 		User u = null;
 		try {
 			String query = "select * from users where username=?";
-
-			PreparedStatement st = Globals.db.getConnection().prepareStatement(query);
+			Connection conn = Globals.db.getConnection();
+			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, username);
 			ResultSet rs = st.executeQuery();
 

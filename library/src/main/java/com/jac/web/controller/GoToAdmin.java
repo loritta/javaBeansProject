@@ -16,16 +16,7 @@ import com.jac.web.model.Book;
  * Servlet implementation class GoToAdmin
  */
 public class GoToAdmin extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GoToAdmin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

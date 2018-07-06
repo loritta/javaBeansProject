@@ -51,8 +51,6 @@ public class LoginController extends HttpServlet {
 				request.setAttribute("user", u);
 				if (u.getRoleId() == 2) {
 					response.sendRedirect(Globals.RootPath+"/GoToUser");
-//					RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-//					rd.forward(request, response);
 				} else if (u.getRoleId() == 1) {
 					Globals.IsAdmin = true;
 					response.sendRedirect(Globals.RootPath+"/GoToAdmin");

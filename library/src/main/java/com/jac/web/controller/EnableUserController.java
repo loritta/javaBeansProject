@@ -28,8 +28,15 @@ public class EnableUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.write("<html>\r\n" + 
+				"<head>\r\n" + 
+				"<title>Servlet.jsp</title>\r\n" + 
+				"<body>\r\n" + 
+				"	<h2>This is EnableUser Get Method!</h2>\r\n" + 
+				"</body>\r\n" + 
+				"</html>");
 	}
 
 	/**

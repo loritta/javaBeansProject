@@ -23,6 +23,7 @@ public class DB {
             conn=DriverManager.getConnection(connectionURL,username,password);
             
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return conn;
 	}
