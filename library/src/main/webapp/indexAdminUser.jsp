@@ -148,7 +148,7 @@
 					ID : id
 				}, function(data, status) {
 					alert(data);
-					if (status.toLowerCase() == "success") {
+					if (data!="Failure") {
 						//trElement.remove();
 						window.location.assign(href);
 					}

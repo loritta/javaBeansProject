@@ -41,12 +41,13 @@ public class DeleteBookController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int id =Integer.parseInt( request.getParameter("ID"));
-		if(BookDAO.deleteBookById(id)) {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		if(BookDAO.deleteBookById(id)) {			
 			out.print("You have already delete this book!");
 		}else {
-			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+			//response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+			out.print("Failure");
 		}
 	}
 

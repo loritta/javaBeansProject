@@ -38,13 +38,14 @@ public class DisableUserController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id =Integer.parseInt( request.getParameter("ID"));
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 		UserDAO userDb = new UserDAO();
-		if(userDb.disableUserById(id)) {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
+		if(userDb.disableUserById(id)) {			
 			out.print("You have already Disabled this user!");
 		}else {
-			response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
+			out.print("Failure");
+			//response.setStatus(HttpServletResponse.SC_EXPECTATION_FAILED);
 		}
 	}
 
