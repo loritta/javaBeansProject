@@ -54,7 +54,7 @@
 							<td><%=tempBook.getAuthor()%></td>
 							<td><%=tempBook.getPublishYear()%></td>
 							<td><button onclick="deleteBook(this)" type="button"
-									class="btn btn-danger">Del</button>|<a href="<%=Globals.RootPath%>/GoToEditBook?id=<%=tempBook.getId()%>"><button type="button" class="btn btn-primary">Edit</button></a> 
+									class="btn btn-danger">Del</button>|<a href="GoToEditBook?id=<%=tempBook.getId()%>"><button type="button" class="btn btn-primary">Edit</button></a> 
 									</td>
 						</tr>
 						<%
@@ -88,7 +88,7 @@
 			var href=window.location.href;
 			if (confirm("Do you want to delete the book id: " + id + ", Name: " + name)) {
 				
-				$.post("<%=Globals.RootPath%>/DeleteBook", {
+				$.post("DeleteBook", {
 					ID : id
 				}, function(data, status) {					
 					alert(data);

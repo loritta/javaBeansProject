@@ -50,10 +50,10 @@ public class LoginController extends HttpServlet {
 				Globals.FullName = u.getFirstName() + " " + u.getLastName();
 				request.setAttribute("user", u);
 				if (u.getRoleId() == 2) {
-					response.sendRedirect(Globals.RootPath+"/GoToUser");
+					response.sendRedirect("GoToUser");
 				} else if (u.getRoleId() == 1) {
 					Globals.IsAdmin = true;
-					response.sendRedirect(Globals.RootPath+"/GoToAdmin");
+					response.sendRedirect("GoToAdmin");
 				}
 			}
 			

@@ -114,7 +114,7 @@
 										<td><%=tempUser.getZip()%></td>
 										<td><button onclick="enableUser(this)" type="button"
 												class="btn btn-danger">Enable</button>|<a
-											href="<%=Globals.RootPath%>/GoToEditUser?id=<%=tempUser.getID()%>"><button
+											href="GoToEditUser?id=<%=tempUser.getID()%>"><button
 													type="button" class="btn btn-primary">Edit</button></a></td>
 									</tr>
 									<%
@@ -144,7 +144,7 @@
 			var name = trElement.children("td:eq(1)").text();	
 			var href=window.location.href;
 			if (confirm("Do you want to Disable the User id: " + id + ", Username:" + name)) {				
-				$.post("<%=Globals.RootPath%>/DisableUser", {
+				$.post("DisableUser", {
 					ID : id
 				}, function(data, status) {
 					alert(data);
@@ -162,7 +162,7 @@
 			var name = trElement.children("td:eq(1)").text();	
 			var href=window.location.href;
 			if (confirm("Do you want to Active the User id: " + id + ", Username:" + name)) {				
-				$.post("<%=Globals.RootPath%>/EnableUser", {
+				$.post("EnableUser", {
 					ID : id
 				}, function(data, status) {
 					alert(data);

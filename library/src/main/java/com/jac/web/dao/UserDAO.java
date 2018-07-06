@@ -70,7 +70,7 @@ public class UserDAO {
 	public void addUser(User user) {
 		try {
 
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");
 			Connection con = Globals.db.getConnection();
 			String query = "INSERT INTO users (username, password, firstName, lastName, phone, address, city, province, zip, roleID) "
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

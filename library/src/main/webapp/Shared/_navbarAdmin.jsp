@@ -15,8 +15,8 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="<%=Globals.RootPath%>/GoToAdmin">Books manager</a>
-				<li><a href="<%=Globals.RootPath%>/GoToAdminUser">User manager</a>
+				<li><a href="GoToAdmin">Books manager</a>
+				<li><a href="GoToAdminUser">User manager</a>
 			</ul>
 		   
 		   <jsp:include page="_navbarRight.jsp"></jsp:include>
