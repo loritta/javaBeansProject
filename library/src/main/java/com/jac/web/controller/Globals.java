@@ -7,4 +7,5 @@ public class Globals {
 	public static String FullName = "";
 	public static String RootPath="/library";
 	public static DB db = new DB();
+	public static String title = "";
 }

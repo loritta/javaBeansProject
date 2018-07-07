@@ -53,7 +53,10 @@
 	background-attachment: fixed;
 }
 
-footer {
+.footer-main{
+	text-align: center;
+}
+.footer-welcome {
 	left: 20px;
 	position: fixed;
 	bottom: 0;

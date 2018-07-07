@@ -1,3 +1,4 @@
+<%@page import="com.jac.web.controller.Globals"%>
 <head>
 <meta charset="utf-8" />
 <link
@@ -5,7 +6,7 @@
 	rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="~/images/logo_nyI_icon.ico" />
-<title>Title variable</title>
+<title><%=Globals.title%></title>
 <link href="Shared/Content/bootstrap.css" rel="stylesheet">
 <link href="Shared/Content/bootstrapspacelab.css" rel="stylesheet">
 <link href="Shared/Content/Site.css" rel="stylesheet">
