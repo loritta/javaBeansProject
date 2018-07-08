@@ -23,7 +23,20 @@ public class AddUserController extends HttpServlet {
 		
 		try {
 			User user = new User();
-			user.setUsername(request.getParameter("username"));
+			UserDAO userDao = new UserDAO();
+			
+			String userName = request.getParameter("username");
+			userDao.getUser(userName);
+			if(userName.equals(user.getUsername())) {
+				request.setAttribute("error", 
+						"This username is alredy exist.");
+				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
+				rd.forward(request, response);
+			}else {
+				user.setUsername(userName);
+			}
+			
+			
 			
 			String pass = request.getParameter("password");
 			String passRe = request.getParameter("passwordRe");
@@ -48,7 +61,7 @@ public class AddUserController extends HttpServlet {
 			user.setRoleId(roleId);
 			
 
-			UserDAO userDao = new UserDAO();			
+						
 			if(!userDao.addUser(user)) {
 				request.setAttribute("error", 
 						"Update user failure!");
