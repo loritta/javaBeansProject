@@ -33,7 +33,7 @@
 			<div class="panel-heading">
 				<a href="addEditBook.jsp"><button type="button" class="btn btn-primary">New Book</button></a>
 			</div>			
-			<div class="input-group col-sm-4">
+			<div class="input-group col-sm-4" style="margin-left: 16px;">
 				<input id="myInput" type="text" class="form-control" placeholder="Search by anything"
 					name="search">
 				<div class="input-group-btn">

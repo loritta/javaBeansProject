@@ -67,7 +67,7 @@ public class UserDAO {
 	}
 
 	// public void addUser(User user) throws ClassNotFoundException {
-	public void addUser(User user) {
+	public Boolean addUser(User user) {
 		try {
 
 			//Class.forName("com.mysql.jdbc.Driver");
@@ -87,9 +87,11 @@ public class UserDAO {
 			st.setString(9, user.getZip());
 			st.setString(10, roleId);
 			st.execute();
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
 
 	}
@@ -105,19 +107,30 @@ public class UserDAO {
 			ResultSet rs = st.executeQuery();
 
 			if (rs.next()) {
-				u = new User();
+				u = new User();				
 				String usernameFromDB = rs.getString("username");
 				String passwordFromDB = rs.getString("password");
 				String firstName = rs.getString("firstName");
 				String lastName = rs.getString("lastName");
-				boolean isActive = rs.getBoolean("isActive");
+				Boolean isActive = rs.getBoolean("isActive");
 				int roleId = rs.getInt("roleID");
+				String phone = rs.getString("phone");
+				String city = rs.getString("city");
+				String province = rs.getString("province");
+				String zip = rs.getString("zip");
+				String address = rs.getString("address");
+				u.setID(id);
+				u.setAddress(address);
 				u.setUsername(usernameFromDB);
 				u.setPassword(passwordFromDB);
 				u.setFirstName(firstName);
 				u.setLastName(lastName);
 				u.setRoleId(roleId);
 				u.setActive(isActive);
+				u.setPhone(phone);
+				u.setCity(city);
+				u.setProvince(province);
+				u.setZip(zip);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -232,6 +245,32 @@ public class UserDAO {
 			PreparedStatement preparedStmt = conn.prepareStatement(query);
 			preparedStmt.setInt(1, id);
 			preparedStmt.executeUpdate();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public Boolean updateUser(User user) {		
+		try {
+			String query = "update users set username=?, password=?,"
+					+ "firstName=?, lastName=?, phone=?, address=?,"
+					+"city=?, province=?, zip=?, roleID=? where id=?";
+			PreparedStatement st = Globals.db.getConnection().prepareStatement(query);
+
+			st.setString(1, user.getUsername());
+			st.setString(2, user.getPassword());
+			st.setString(3, user.getFirstName());
+			st.setString(4, user.getLastName());
+			st.setString(5, user.getPhone());
+			st.setString(6, user.getAddress());
+			st.setString(7, user.getCity());
+			st.setString(8, user.getProvince());
+			st.setString(9, user.getZip());
+			st.setInt(10, user.getRoleId());
+			st.setInt(11, user.getID());
+			st.execute();
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

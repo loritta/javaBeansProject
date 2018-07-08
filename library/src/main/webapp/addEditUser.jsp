@@ -27,15 +27,13 @@
 			User user = (User) request.getAttribute("user");
 		%>
         <%if(user==null){ %>
-
-        <h1> Add User</h1>
-        
+        <h1> Add User</h1>        
         <form class="form-horizontal" action="AddUser" method="post"
 			id="" name="" onsubmit="return validateForm();">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="username">Username:</label>
 				<div class="col-sm-4">
-					<input name="username" id="username" class="form-control"
+					<input  name="username" id="username" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
@@ -118,15 +116,15 @@
 			<div class="form-group">
 				<label class="col-sm-2"></label>
 				<div class="col-sm-4">
-					<button type="submit" class="btn btn-primary">Add/Edit User</button>
+					<button type="submit" class="btn btn-primary">Add User</button>
 				</div>
 			</div>
 		</form>        
         <%}else{ %>
-        <h1> Edit User</h1>
-        
-        <form class="form-horizontal" action="AddUser" method="post"
+        <h1> Edit User</h1>        
+        <form class="form-horizontal" action="EditUser" method="post"
 			id="" name="" onsubmit="return validateForm();">
+			<input type="hidden" id="Id" name="Id" value="<%=user.getID() %>">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="username">Username:</label>
 				<div class="col-sm-4">
@@ -137,24 +135,28 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="password">Password:</label>
 				<div class="col-sm-4">
-					<input name="password" id="password" class="form-control"
+					<input value="<%=user.getPassword() %>" name="password" id="password" class="form-control"
 						type="password" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="passwordRe">Retype Password:</label>
 				<div class="col-sm-4">
-					<input name="passwordRe" id="passwordRe" class="form-control"
+					<input value="<%=user.getPassword() %>" name="passwordRe" id="passwordRe" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="role">Role:</label>
 				<div class="col-sm-4">
-				<select name="role" id="role" class="form-control">
-				<option>Please select the user's Role</option>
-				<option value="1">Admin</option>
+				<select name="role" id="role" class="form-control">	
+				<%if(user.getRoleId()==1){ %>			
+				<option selected value="1">Admin</option>
 				<option value="2">User</option>
+				<%}else{ %>
+				<option value="1">Admin</option>
+				<option selected value="2">User</option>
+				<%} %>
 				</select>
 				</div>
 			</div>
@@ -168,57 +170,63 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="lastName">Last Name:</label>
 				<div class="col-sm-4">
-					<input name="lastName" id="lastName" class="form-control"
+					<input value="<%=user.getLastName() %>" name="lastName" id="lastName" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone">Phone:</label>
 				<div class="col-sm-4">
-					<input name="phone" id="phone" class="form-control"
+					<input value="<%=user.getPhone() %>" name="phone" id="phone" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="address">Address:</label>
 				<div class="col-sm-4">
-					<input name="address" id="address" class="form-control"
+					<input value="<%=user.getAddress() %>" name="address" id="address" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="city">City:</label>
 				<div class="col-sm-4">
-					<input name="city" id="city" class="form-control"
+					<input value="<%=user.getCity() %>" name="city" id="city" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="province">Province:</label>
 				<div class="col-sm-4">
-				<select name="province" id="province" class="form-control">
-				<option>Please select a Province</option>
-				<option value="QC">QC</option>
+				<select name="province" id="province" class="form-control">				
+				<%if(user.getProvince()=="QC"){ %>
+				<option selected  value="QC">QC</option>
 				<option value="ON">ON</option>
+				<%}else{ %>
+				<option value="QC">QC</option>
+				<option selected value="ON">ON</option>
+				<%} %>
 				</select>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="zipcode">Zipcode:</label>
 				<div class="col-sm-4">
-					<input name="zipcode" id="zipcode" class="form-control"
+					<input value="<%=user.getZip() %>" name="zipcode" id="zipcode" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2"></label>
 				<div class="col-sm-4">
-					<button type="submit" class="btn btn-primary">Add/Edit User</button>
+					<button type="submit" class="btn btn-primary">Edit User</button>
 				</div>
 			</div>
 		</form>
 		<%} %>
-        
+        <br>
+        <br>
+        <br>
 <!--         END OF THE BODY CONTENT-->
         
       

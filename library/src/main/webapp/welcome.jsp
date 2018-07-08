@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@page import="com.jac.web.controller.Globals"%>
+<%Globals.title = "EJB Library - Login"; %>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 
@@ -47,7 +49,9 @@
 
 
 		</div>
+		
 		<jsp:include page="Shared/_footer.jsp"></jsp:include>
+		
 	</div>
 
 	<jsp:include page="Shared/_scripts_bundle.jsp"></jsp:include>

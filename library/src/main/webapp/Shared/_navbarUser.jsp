@@ -14,9 +14,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="books.jsp">Books</a>
-				<li><a href="about.jsp">About</a>
-				<li><a href="contact.jsp">Contact</a>
+				
 			</ul>
 		   
 		   <jsp:include page="_navbarRight.jsp"></jsp:include>
