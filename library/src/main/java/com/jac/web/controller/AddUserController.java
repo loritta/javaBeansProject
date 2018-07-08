@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jac.web.dao.UserDAO;
 import com.jac.web.model.User;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order.Direction;
 
 /**
  * Servlet implementation class AddUserController
@@ -49,7 +50,10 @@ public class AddUserController extends HttpServlet {
 			UserDAO userDao = new UserDAO();
 			userDao.addUser(user);
 			
-			
+			request.setAttribute("Done", 
+					"User added to the database.");
+			RequestDispatcher rd = request.getRequestDispatcher("indexAdminUser.jsp");
+			rd.forward(request, response);
 			
 				
 		} catch (Exception e) {
