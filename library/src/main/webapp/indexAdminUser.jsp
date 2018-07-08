@@ -27,10 +27,10 @@
 		<h1>User Management</h1>
 		<%
 			ArrayList<User> usersActiveList = (ArrayList<User>) request.getAttribute("usersActiveList");
-		ArrayList<User> usersUnActiveList = (ArrayList<User>) request.getAttribute("usersUnActiveList");
+			ArrayList<User> usersUnActiveList = (ArrayList<User>) request.getAttribute("usersUnActiveList");
 		%>
 
-		<div class="container">			
+		<div class="container">
 			<ul class="nav nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#Active">Active</a></li>
 				<li><a data-toggle="tab" href="#UnActive">UnActive</a></li>
@@ -59,6 +59,7 @@
 									<tr>
 										<th>UserID</th>
 										<th>Username</th>
+										<th>Role</th>
 										<th>Phone</th>
 										<th>Address</th>
 										<th>City</th>
@@ -73,6 +74,17 @@
 									<tr>
 										<td><%=tempUser.getID()%></td>
 										<td><%=tempUser.getUsername()%></td>
+										<%
+											if (tempUser.getRoleId() == 1) {
+										%>
+										<td>Admin</td>
+										<%
+											} else {
+										%>
+										<td>User</td>
+										<%
+											}
+										%>
 										<td><%=tempUser.getPhone()%></td>
 										<td><%=tempUser.getAddress()%></td>
 										<td><%=tempUser.getCity()%></td>
@@ -110,6 +122,7 @@
 									<tr>
 										<th>UserID</th>
 										<th>Username</th>
+										<th>Role</th>
 										<th>Phone</th>
 										<th>Address</th>
 										<th>City</th>
@@ -124,6 +137,17 @@
 									<tr>
 										<td><%=tempUser.getID()%></td>
 										<td><%=tempUser.getUsername()%></td>
+										<%
+											if (tempUser.getRoleId() == 1) {
+										%>
+										<td>Admin</td>
+										<%
+											} else {
+										%>
+										<td>User</td>
+										<%
+											}
+										%>
 										<td><%=tempUser.getPhone()%></td>
 										<td><%=tempUser.getAddress()%></td>
 										<td><%=tempUser.getCity()%></td>
@@ -158,27 +182,29 @@
 		function disableUser(btn) {
 			var trElement = $(btn).parent().parent();
 			var id = trElement.children("td:eq(0)").text();
-			var name = trElement.children("td:eq(1)").text();	
-			var href=window.location.href;
-			if (confirm("Do you want to Disable the User id: " + id + ", Username:" + name)) {				
+			var name = trElement.children("td:eq(1)").text();
+			var href = window.location.href;
+			if (confirm("Do you want to Disable the User id: " + id
+					+ ", Username:" + name)) {
 				$.post("DisableUser", {
 					ID : id
 				}, function(data, status) {
 					alert(data);
-					if (data!="Failure") {
+					if (data != "Failure") {
 						//trElement.remove();
 						window.location.assign(href);
 					}
 				});
 			}
 		}
-		
+
 		function enableUser(btn) {
 			var trElement = $(btn).parent().parent();
 			var id = trElement.children("td:eq(0)").text();
-			var name = trElement.children("td:eq(1)").text();	
-			var href=window.location.href;
-			if (confirm("Do you want to Active the User id: " + id + ", Username:" + name)) {				
+			var name = trElement.children("td:eq(1)").text();
+			var href = window.location.href;
+			if (confirm("Do you want to Active the User id: " + id
+					+ ", Username:" + name)) {
 				$.post("EnableUser", {
 					ID : id
 				}, function(data, status) {
@@ -190,22 +216,50 @@
 				});
 			}
 		}
-		
-		$(document).ready(function(){
-			  $("#myActiveInput").on("keyup", function() {
-			    var value = $(this).val().toLowerCase();
-			    $("#ActiveList tr").filter(function() {
-			      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			    });
-			  });
-			  
-			  $("#myUnActiveInput").on("keyup", function() {
-				    var value = $(this).val().toLowerCase();
-				    $("#UnActiveList tr").filter(function() {
-				      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				    });
-				  });
-			});
+
+		$(document)
+				.ready(
+						function() {
+							$("#myActiveInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#ActiveList tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+
+							$("#myUnActiveInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#UnActiveList tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
 	</script>
 </body>
 

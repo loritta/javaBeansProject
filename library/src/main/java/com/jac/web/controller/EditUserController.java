@@ -12,14 +12,13 @@ import com.jac.web.dao.UserDAO;
 import com.jac.web.model.User;
 
 /**
- * Servlet implementation class AddUserController
+ * Servlet implementation class EditUserController
  */
-public class AddUserController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-   
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
+public class EditUserController extends HttpServlet {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			User user = new User();
 			user.setUsername(request.getParameter("username"));
@@ -33,9 +32,8 @@ public class AddUserController extends HttpServlet {
 						"Password is not match.");
 				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
 				rd.forward(request, response);
-			}
-			
-			
+			}			
+			int id = Integer.parseInt(request.getParameter("Id")); 
 			int roleId = Integer.parseInt(request.getParameter("role"));  
 			user.setFirstName(request.getParameter("firstName"));
 			user.setLastName(request.getParameter("lastName"));
@@ -45,9 +43,10 @@ public class AddUserController extends HttpServlet {
 			user.setProvince(request.getParameter("province"));
 			user.setZip(request.getParameter("zipcode"));
 			user.setRoleId(roleId);
+			user.setID(id);
 			
-			UserDAO userDao = new UserDAO();			
-			if(!userDao.addUser(user)) {
+			UserDAO userDao = new UserDAO();
+			if(!userDao.updateUser(user)) {
 				request.setAttribute("error", 
 						"Update user failure!");
 				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
@@ -57,6 +56,5 @@ public class AddUserController extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
