@@ -49,7 +49,7 @@ public class AddUserController extends HttpServlet {
 			UserDAO userDao = new UserDAO();			
 			if(!userDao.addUser(user)) {
 				request.setAttribute("error", 
-						"Update user failure!");
+						"New user failure!");
 				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
 				rd.forward(request, response);
 			}
