@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@page import="com.jac.web.controller.Globals"%>
+<%Globals.title = "EJB Library - List of books"; %>
 <%@page import="com.jac.web.model.Book"%>
 <%@ page import="java.util.ArrayList"%>
 <html>

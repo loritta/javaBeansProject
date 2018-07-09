@@ -54,9 +54,11 @@
 }
 
 
-.foo-ter {
-	
+.footer-welcome {
 	left: 20px;
 	position: fixed;
 	bottom: 0;
+}
+.footer-main {
+	text-align: center;
 }

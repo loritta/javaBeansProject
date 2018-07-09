@@ -55,6 +55,12 @@
 	</div>
 
 	<jsp:include page="Shared/_scripts_bundle.jsp"></jsp:include>
+	<script>
+		$(document).ready(function(){
+			$('footer').removeClass("footer-main");
+			$('footer').addClass("footer-welcome");
+		});
+	</script>
 </body>
 
 </html>
