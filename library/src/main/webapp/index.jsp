@@ -18,7 +18,9 @@
 
 		<%
 			ArrayList<Book> booksList = (ArrayList<Book>) request.getAttribute("booksList");
-			String searchString = request.getAttribute("searchString")==null? "" : (String)request.getAttribute("searchString");
+			String searchString = request.getAttribute("searchString") == null
+					? ""
+					: (String) request.getAttribute("searchString");
 		%>
 		<h1>List of books</h1>
 		<form action="GoToUser" method="post" id="searchBox" name="searchBox">
@@ -35,7 +37,7 @@
 				</div>
 			</div>
 		</form>
-		
+
 
 		<%
 			if (booksList.size() == 0) {
@@ -78,7 +80,7 @@
 		</div>
 
 		<%
-				}
+			}
 			}
 		%>
 
@@ -90,13 +92,16 @@
 	</div>
 
 	<jsp:include page="Shared/_scripts_bundle.jsp"></jsp:include>
-		<script>
+	<script>
 		$(document).ready(function(){
 			$('#search').val("<%=searchString%>");
-			  $("#clean").on("click", function() {
-				  $('#search').val("");
-			  });
+
+			$("#clean").on("click", function() {
+				$('#search').val("");
+				document.getElementById('searchBox').submit();
 			});
+
+		});
 	</script>
 </body>
 

@@ -156,7 +156,7 @@
 				<label class="control-label col-sm-2" for="passwordRe">Retype Password:</label>
 				<div class="col-sm-4">
 					<input value="<%=user.getPassword() %>" name="passwordRe" id="passwordRe" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+						type="password" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
