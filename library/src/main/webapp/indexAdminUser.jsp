@@ -1,7 +1,8 @@
-<!DOCTYPE html>
 <%@page import="com.jac.web.controller.Globals"%>
 <%@page import="com.jac.web.model.User"%>
 <%@ page import="java.util.ArrayList"%>
+<%Globals.title = "EJB Library - Admin User Page"; %>
+<!DOCTYPE html>
 <html>
 <jsp:include page="Shared/_head.jsp"></jsp:include>
 <body>
