@@ -21,6 +21,7 @@ public class EditUserController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			User user = new User();
+			
 			user.setUsername(request.getParameter("username"));
 			
 			String pass = request.getParameter("password");
@@ -49,6 +50,7 @@ public class EditUserController extends HttpServlet {
 			if(!userDao.updateUser(user)) {
 				request.setAttribute("error", 
 						"Update user failure!");
+				request.setAttribute("user", user);
 				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
 				rd.forward(request, response);
 			}

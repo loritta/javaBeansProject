@@ -26,8 +26,8 @@ public class AddUserController extends HttpServlet {
 			UserDAO userDao = new UserDAO();
 			
 			String userName = request.getParameter("username");
-			userDao.getUser(userName);
-			if(userName.equals(user.getUsername())) {
+			User userFromDB = userDao.getUser(userName);
+			if(userFromDB!=null) {
 				request.setAttribute("error", 
 						"This username is alredy exist.");
 				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");

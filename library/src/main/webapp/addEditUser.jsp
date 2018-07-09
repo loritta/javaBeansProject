@@ -122,7 +122,7 @@
 				<label class="control-label col-sm-2" for="zipcode">Zipcode:</label>
 				<div class="col-sm-4">
 					<input name="zipcode" id="zipcode" class="form-control"
-						type="text" placeholder="" maxlength="50" required
+						type="text" placeholder="H3E1T7" maxlength="50" required
 						pattern="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]">
 				</div>
 			</div>
@@ -139,9 +139,9 @@
 			id="" name="" onsubmit="return validateForm();">
 			<input type="hidden" id="Id" name="Id" value="<%=user.getID() %>">
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="username">Username:</label>
+				<label  class="control-label col-sm-2" for="username">Username:</label>
 				<div class="col-sm-4">
-					<input value="<%=user.getUsername() %>" name="username" id="username" class="form-control"
+					<input disabled value="<%=user.getUsername() %>" name="username" id="username" class="form-control"
 						type="text" placeholder="" maxlength="50" required>
 				</div>
 			</div>
@@ -190,8 +190,8 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="phone">Phone:</label>
 				<div class="col-sm-4">
-					<input value="<%=user.getPhone() %>" name="phone" id="phone" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+					<input pattern="^\d{3}-\d{3}-\d{4}$" value="<%=user.getPhone() %>" name="phone" id="phone" class="form-control"
+						type="text" placeholder="514-123-4321" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -211,14 +211,21 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="province">Province:</label>
 				<div class="col-sm-4">
-				<select name="province" id="province" class="form-control">				
-				<%if(user.getProvince()=="QC"){ %>
-				<option selected  value="QC">QC</option>
+				<select name="province" id="province" class="form-control">	
+				<option value="<%=user.getProvince() %>"><%=user.getProvince()%></option>
+				<option value="AB">AB</option>
+				<option value="BC">BC</option>
+				<option value="MB">MB</option>
+				<option value="NB">NB</option>
+				<option value="NL">NL</option>
+				<option value="NS">NS</option>
+				<option value="NT">NT</option>
+				<option value="NU">NU</option>
 				<option value="ON">ON</option>
-				<%}else{ %>
+				<option value="PE">PE</option>
 				<option value="QC">QC</option>
-				<option selected value="ON">ON</option>
-				<%} %>
+				<option value="SK">SK</option>
+				<option value="YT">YT</option>			
 				</select>
 				</div>
 			</div>
@@ -226,7 +233,7 @@
 				<label class="control-label col-sm-2" for="zipcode">Zipcode:</label>
 				<div class="col-sm-4">
 					<input value="<%=user.getZip() %>" name="zipcode" id="zipcode" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+						type="text" placeholder="H3E5G4" pattern="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -236,6 +243,9 @@
 				</div>
 			</div>
 		</form>
+		<%} %>
+		<%if(request.getAttribute("error")!=null){ %>
+		<p style="color:red"><%=request.getAttribute("error")%></p>
 		<%} %>
         <br>
         <br>
