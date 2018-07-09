@@ -95,9 +95,7 @@
 	<script>
 		$(document).ready(function(){
 			$('#search').val("<%=searchString%>");
-			$("#clean").on("click", function() {
-				$('#search').val("");
-			});
+
 			$("#clean").on("click", function() {
 				$('#search').val("");
 				document.getElementById('searchBox').submit();
