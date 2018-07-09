@@ -48,7 +48,7 @@
 				<label class="control-label col-sm-2" for="passwordRe">Retype Password:</label>
 				<div class="col-sm-4">
 					<input name="passwordRe" id="passwordRe" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+						type="password" placeholder="" maxlength="50" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -79,7 +79,8 @@
 				<label class="control-label col-sm-2" for="phone">Phone:</label>
 				<div class="col-sm-4">
 					<input name="phone" id="phone" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+						type="text" placeholder="xxx-xxx-xxxx" maxlength="50" required 
+						pattern="^\d{3}-\d{3}-\d{4}$">
 				</div>
 			</div>
 			<div class="form-group">
@@ -101,8 +102,19 @@
 				<div class="col-sm-4">
 				<select name="province" id="province" class="form-control">
 				<option>Please select a Province</option>
-				<option value="QC">QC</option>
+				<option value="AB">AB</option>
+				<option value="BC">BC</option>
+				<option value="MB">MB</option>
+				<option value="NB">NB</option>
+				<option value="NL">NL</option>
+				<option value="NS">NS</option>
+				<option value="NT">NT</option>
+				<option value="NU">NU</option>
 				<option value="ON">ON</option>
+				<option value="PE">PE</option>
+				<option value="QC">QC</option>
+				<option value="SK">SK</option>
+				<option value="YT">YT</option>
 				</select>
 				</div>
 			</div>
@@ -110,7 +122,8 @@
 				<label class="control-label col-sm-2" for="zipcode">Zipcode:</label>
 				<div class="col-sm-4">
 					<input name="zipcode" id="zipcode" class="form-control"
-						type="text" placeholder="" maxlength="50" required>
+						type="text" placeholder="" maxlength="50" required
+						pattern="[a-zA-Z][0-9][a-zA-Z][0-9][a-zA-Z][0-9]">
 				</div>
 			</div>
 			<div class="form-group">

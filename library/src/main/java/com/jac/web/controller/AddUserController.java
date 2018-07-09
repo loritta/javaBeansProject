@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jac.web.dao.UserDAO;
 import com.jac.web.model.User;
+import com.mysql.cj.x.protobuf.MysqlxCrud.Order.Direction;
 
 /**
  * Servlet implementation class AddUserController
@@ -22,7 +23,20 @@ public class AddUserController extends HttpServlet {
 		
 		try {
 			User user = new User();
-			user.setUsername(request.getParameter("username"));
+			UserDAO userDao = new UserDAO();
+			
+			String userName = request.getParameter("username");
+			userDao.getUser(userName);
+			if(userName.equals(user.getUsername())) {
+				request.setAttribute("error", 
+						"This username is alredy exist.");
+				RequestDispatcher rd = request.getRequestDispatcher("addEditUser.jsp");
+				rd.forward(request, response);
+			}else {
+				user.setUsername(userName);
+			}
+			
+			
 			
 			String pass = request.getParameter("password");
 			String passRe = request.getParameter("passwordRe");
@@ -46,7 +60,8 @@ public class AddUserController extends HttpServlet {
 			user.setZip(request.getParameter("zipcode"));
 			user.setRoleId(roleId);
 			
-			UserDAO userDao = new UserDAO();			
+
+						
 			if(!userDao.addUser(user)) {
 				request.setAttribute("error", 
 						"New user failure!");
@@ -54,6 +69,7 @@ public class AddUserController extends HttpServlet {
 				rd.forward(request, response);
 			}
 			response.sendRedirect("GoToAdminUser");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
