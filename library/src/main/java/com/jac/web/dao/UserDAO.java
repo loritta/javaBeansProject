@@ -254,22 +254,22 @@ public class UserDAO {
 	
 	public Boolean updateUser(User user) {		
 		try {
-			String query = "update users set username=?, password=?,"
+			String query = "update users set  password=?,"
 					+ "firstName=?, lastName=?, phone=?, address=?,"
 					+"city=?, province=?, zip=?, roleID=? where id=?";
 			PreparedStatement st = Globals.db.getConnection().prepareStatement(query);
 
-			st.setString(1, user.getUsername());
-			st.setString(2, user.getPassword());
-			st.setString(3, user.getFirstName());
-			st.setString(4, user.getLastName());
-			st.setString(5, user.getPhone());
-			st.setString(6, user.getAddress());
-			st.setString(7, user.getCity());
-			st.setString(8, user.getProvince());
-			st.setString(9, user.getZip());
-			st.setInt(10, user.getRoleId());
-			st.setInt(11, user.getID());
+			//st.setString(1, user.getUsername());
+			st.setString(1, user.getPassword());
+			st.setString(2, user.getFirstName());
+			st.setString(3, user.getLastName());
+			st.setString(4, user.getPhone());
+			st.setString(5, user.getAddress());
+			st.setString(6, user.getCity());
+			st.setString(7, user.getProvince());
+			st.setString(8, user.getZip());
+			st.setInt(9, user.getRoleId());
+			st.setInt(10, user.getID());
 			st.execute();
 			return true;
 		} catch (Exception e) {
