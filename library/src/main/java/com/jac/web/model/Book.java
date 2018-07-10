@@ -7,6 +7,11 @@ public class Book {
 	private String author;
 	private int publishYear;
 	private String picLink;
+	
+	public Book() {
+		super();
+		
+	}
 	public Book(int id, String title, String author, int publishYear, String picLink) {
 		super();
 		this.id = id;

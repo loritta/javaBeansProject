@@ -81,4 +81,42 @@ public class BookDAO {
 
 	}
 	
+	public void addBook(Book book) {
+		try {
+
+			Connection conn = Globals.db.getConnection();
+			String query = "INSERT INTO ejblibrary.books  (title, author,publishYear,picLink) VALUES(?,?,?,?)";
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setString(1, book.getTitle());
+			st.setString(2, book.getAuthor());
+			st.setInt(3, book.getPublishYear());
+			st.setString(4, book.getPicLink());
+
+			st.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void updateBook(Book book) {
+		try {
+
+			Connection con = Globals.db.getConnection();
+			String query = "UPDATE ejblibrary.books  SET title=?, author=?, publishYear=?, picLink=? WHERE id=?";
+			PreparedStatement st = con.prepareStatement(query);
+			st.setString(1, book.getTitle());
+			st.setString(2, book.getAuthor());
+			st.setInt(3, book.getPublishYear());
+			st.setString(4, book.getPicLink());
+			st.setInt(5, book.getId());
+			st.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	
 }
