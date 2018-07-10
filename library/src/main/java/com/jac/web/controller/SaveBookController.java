@@ -30,7 +30,7 @@ public class SaveBookController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out =response.getWriter();
-		String savePath="C:\\Users\\1796117\\eclipse-workspace\\apache-tomcat-8.5.32\\webapps\\library\\"+File.separator+SAVE_DIR;
+		String savePath=request.getServletContext().getRealPath("")+File.separator+SAVE_DIR;
 		File fileSaveDir=new File(savePath);
 		Part part=request.getPart("picLink");
         
